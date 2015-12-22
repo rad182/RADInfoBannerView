@@ -23,6 +23,40 @@ it, simply add the following line to your Podfile:
 pod "RADInfoBannerView"
 ```
 
+## Usage
+
+Import module
+```swift
+import RADInfoBannerView
+```
+
+Showing simple info banner view with "Hello" text
+
+```swift
+RADInfoBannerView.showInfoBannerView("Hello")
+```
+
+With Activity Indicator and hide delay
+
+```swift
+RADInfoBannerView.showInfoBannerView("Hello", showActivityIndicatorView: true, hideAfter: 5.0)
+```
+
+Customize info banner view
+
+```swift
+let infoBannerView = RADInfoBannerView(text: text, showActivityIndicatorView: self.activityIndicatorSwitch.on)
+infoBannerView.backgroundColor = .redColor()
+infoBannerView.textLabel.textColor = .yellowColor()
+infoBannerView.show().hide(afterDelay: 3.0)
+```
+
+## Communication
+
+- If you **found a bug**, open an issue.
+- If you **have a feature request**, open an issue.
+- If you **want to contribute**, submit a pull request.
+
 ## License
 
 RADInfoBannerView is available under the MIT license. See the LICENSE file for more info.
