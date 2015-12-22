@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'RADInfoBannerView_Example', :exclusive => true do
+  pod "RADInfoBannerView", :path => "../"
+end
+
+target 'RADInfoBannerView_Tests', :exclusive => true do
+  pod "RADInfoBannerView", :path => "../"
+
+  
+end
