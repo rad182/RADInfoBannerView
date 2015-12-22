@@ -1,6 +1,5 @@
 # RADInfoBannerView
 
-[![CI Status](http://img.shields.io/travis/rad182/RADInfoBannerView.svg?style=flat)](https://travis-ci.org/rad182/RADInfoBannerView)
 [![Version](https://img.shields.io/cocoapods/v/RADInfoBannerView.svg?style=flat)](http://cocoapods.org/pods/RADInfoBannerView)
 [![License](https://img.shields.io/cocoapods/l/RADInfoBannerView.svg?style=flat)](http://cocoapods.org/pods/RADInfoBannerView)
 [![Platform](https://img.shields.io/cocoapods/p/RADInfoBannerView.svg?style=flat)](http://cocoapods.org/pods/RADInfoBannerView)
