@@ -1,0 +1,6 @@
+framework module Pods_RADInfoBannerView_Example {
+  umbrella header "Pods-RADInfoBannerView_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

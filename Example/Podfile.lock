@@ -1,0 +1,14 @@
+PODS:
+  - RADInfoBannerView (0.1.0)
+
+DEPENDENCIES:
+  - RADInfoBannerView (from `../`)
+
+EXTERNAL SOURCES:
+  RADInfoBannerView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  RADInfoBannerView: c522b7aae2e8f93cd01edb3dbcbea69e8197a8c7
+
+COCOAPODS: 0.39.0

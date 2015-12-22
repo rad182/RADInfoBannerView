@@ -1,0 +1,6 @@
+framework module RADInfoBannerView {
+  umbrella header "RADInfoBannerView-umbrella.h"
+
+  export *
+  module * { export * }
+}
