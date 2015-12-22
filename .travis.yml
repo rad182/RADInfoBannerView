@@ -3,6 +3,7 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 language: objective-c
+xcode_sdk: iphonesimulator9.2
 # cache: cocoapods
 # podfile: Example/Podfile
 # before_install:
