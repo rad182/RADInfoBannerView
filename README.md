@@ -39,7 +39,7 @@ RADInfoBannerView.showInfoBannerView("Hello")
 With Activity Indicator and hide delay
 
 ```swift
-RADInfoBannerView.showInfoBannerView("Hello", showActivityIndicatorView: true, hideAfter: 5.0)
+RADInfoBannerView.showInfoBannerView("Loading more messages", showActivityIndicatorView: true, hideAfter: 5.0)
 ```
 
 Customize info banner view
