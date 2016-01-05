@@ -47,7 +47,7 @@ public class RADInfoBannerView: UIView {
     
     override public func updateConstraints() {
         var topOffset: CGFloat = 0.0
-        if let navigationController = self.topViewController?.parentViewController as? UINavigationController {
+        if let navigationController = self.topViewController as? UINavigationController {
             if navigationController.navigationBarHidden == false {
                 topOffset = 20.0 + CGRectGetHeight(navigationController.navigationBar.frame) // 20 px for status bar + navigation bar height
             }
@@ -85,9 +85,9 @@ public class RADInfoBannerView: UIView {
     }
     
     // MARK: Public Methods
-    public func show() -> Self {
+    public func show(inController: UIViewController? = UIApplication.topViewController()) -> Self {
         // get top view controller
-        guard let topViewController = UIApplication.topViewController() else {
+        guard let topViewController = inController else {
             fatalError("no top view controller detected")
         }
         self.topViewController = topViewController
