@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "RADInfoBannerView"
-  s.version          = "0.1.1"
+  s.version          = "0.1.2"
   s.summary          = "Simple and Customizable Dropdown banner below Navigation Bar"
   s.homepage         = "https://github.com/rad182/RADInfoBannerView"
   s.license          = 'MIT'
