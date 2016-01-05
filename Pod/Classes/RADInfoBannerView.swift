@@ -108,8 +108,8 @@ public class RADInfoBannerView: UIView {
         return self
     }
     
-    public func hide(afterDelay delay: Double = 0.0) {
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+    public func hide(afterDelay delay: Double? = 0.0) {
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay ?? 0.0 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             // set height back to 0
             self.heightConstraint.constant = 0.0
@@ -121,7 +121,7 @@ public class RADInfoBannerView: UIView {
         }
     }
     
-    public class func showInfoBannerView(text: String, showActivityIndicatorView: Bool = false, hideAfter delay: Double = 3.0) -> RADInfoBannerView {
+    public class func showInfoBannerView(text: String, showActivityIndicatorView: Bool = false, hideAfter delay: Double? = 3.0) -> RADInfoBannerView {
         let infoBannerView = RADInfoBannerView(text: text, showActivityIndicatorView: showActivityIndicatorView)
         infoBannerView.show().hide(afterDelay: delay)
         return infoBannerView
