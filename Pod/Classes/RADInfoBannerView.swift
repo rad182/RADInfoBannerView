@@ -85,9 +85,9 @@ public class RADInfoBannerView: UIView {
     }
     
     // MARK: Public Methods
-    public func show(inController: UIViewController? = UIApplication.topViewController()) -> Self {
+    public func show(inController topViewController: UIViewController? = UIApplication.topViewController()) -> Self {
         // get top view controller
-        guard let topViewController = inController else {
+        guard let topViewController = topViewController else {
             fatalError("no top view controller detected")
         }
         self.topViewController = topViewController
