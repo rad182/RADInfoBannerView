@@ -18,11 +18,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "didTapView")
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Methods
+    func didTapView() {
+        // hide keyboard
+        self.messageText.resignFirstResponder()
     }
     
     // MARK: IBActions
@@ -45,5 +53,12 @@ class ViewController: UIViewController {
         }
     }
 
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
