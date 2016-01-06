@@ -162,9 +162,9 @@ public class RADInfoBannerView: UIView {
         }
     }
     
-    public class func showInfoBannerView(text: String, showActivityIndicatorView: Bool = false, hideAfter delay: Double? = nil) -> RADInfoBannerView {
+    public class func showInfoBannerView(text: String, showActivityIndicatorView: Bool = false, hideAfter delay: Double? = nil, inController topViewController: UIViewController? = nil) -> RADInfoBannerView {
         let infoBannerView = RADInfoBannerView(text: text, showActivityIndicatorView: showActivityIndicatorView)
-        infoBannerView.show()
+        infoBannerView.show(inController: topViewController)
         if let delay = delay {
             infoBannerView.hide(afterDelay: delay)
         }
