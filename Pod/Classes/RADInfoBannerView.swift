@@ -8,8 +8,8 @@
 
 import UIKit
 
-private let RADInfoBannerViewWithNavigationBarHeight: CGFloat = 30.0
-private let RADInfoBannerViewWithoutNavigationBarHeight: CGFloat = 50.0
+private let RADInfoBannerViewHeight: CGFloat = 30.0
+private let RADInfoBannerViewHeightPadding: CGFloat = 10.0
 
 public class RADInfoBannerView: UIView {
     
@@ -29,6 +29,7 @@ public class RADInfoBannerView: UIView {
         self.textLabel.font = UIFont.systemFontOfSize(14.0)
         self.textLabel.textAlignment = .Center
         self.textLabel.textColor = UIColor.whiteColor()
+        self.textLabel.numberOfLines = 0
         self.addSubview(self.textLabel)
         
         self.activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,10 +47,13 @@ public class RADInfoBannerView: UIView {
     }
     
     override public func updateConstraints() {
-        var topOffset: CGFloat = 0.0
-        if let navigationController = self.topViewController as? UINavigationController {
-            if navigationController.navigationBarHidden == false {
-                topOffset = 20.0 + CGRectGetHeight(navigationController.navigationBar.frame) // 20 px for status bar + navigation bar height
+        var topOffset: CGFloat = 20.0
+        
+        if self.topViewController?.edgesForExtendedLayout == .All || self.topViewController?.edgesForExtendedLayout == .Top {
+            if let navigationController = self.topViewController?.parentViewController as? UINavigationController {
+                if navigationController.navigationBarHidden == false {
+                    topOffset += CGRectGetHeight(navigationController.navigationBar.frame)
+                }
             }
         }
         
@@ -62,11 +66,12 @@ public class RADInfoBannerView: UIView {
             
             // activityIndicator
             NSLayoutConstraint(item: self.activityIndicatorView, attribute: .CenterY, relatedBy: .Equal, toItem: self.textLabel, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: self.activityIndicatorView, attribute: .Right, relatedBy: .Equal, toItem: self.textLabel, attribute: .Left, multiplier: 1.0, constant: -5.0),
+            NSLayoutConstraint(item: self.activityIndicatorView, attribute: .Right, relatedBy: .Equal, toItem: self.textLabel, attribute: .Left, multiplier: 1.0, constant: 5.0),
             
             // textLabel
-            NSLayoutConstraint(item: self.textLabel, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: -8.0),
-            NSLayoutConstraint(item: self.textLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
+            NSLayoutConstraint(item: self.textLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: self.textLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: self.textLabel, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 0.88, constant: 0.0)
         ])
         
         super.updateConstraints()
@@ -77,30 +82,53 @@ public class RADInfoBannerView: UIView {
     }
     
     // MARK: Private Methods
-    private func infoBannerViewHeight() -> CGFloat {
-        if let navigationController = self.topViewController?.parentViewController as? UINavigationController {
-            return navigationController.navigationBarHidden ? RADInfoBannerViewWithoutNavigationBarHeight : RADInfoBannerViewWithNavigationBarHeight
+    func hideInfoBannerView(animated: Bool = true) {
+        // if already removed then just return
+        guard let _ = self.superview else {
+            return
         }
-        return RADInfoBannerViewWithNavigationBarHeight
+        
+        if animated {
+            // set height back to 0
+            self.heightConstraint.constant = 0.0
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.superview!.layoutIfNeeded()
+            }, completion: { (finished) -> Void in
+                self.removeFromSuperview()
+            })
+        } else {
+            self.removeFromSuperview()
+        }
+    }
+    
+    func textLabelHeight() -> CGFloat {
+        let textString = NSString(string: self.textLabel.text!)
+        
+        let screenWidth = CGRectGetWidth(UIScreen.mainScreen().bounds)
+        let constraintRect = CGSize(width: screenWidth * 0.8, height: CGFloat.max)
+        let boundingBox = textString.boundingRectWithSize(constraintRect, options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: self.textLabel.font], context: nil)
+        let calculatedHeight = boundingBox.size.height + RADInfoBannerViewHeightPadding
+        return calculatedHeight > RADInfoBannerViewHeight ? calculatedHeight : RADInfoBannerViewHeight
     }
     
     // MARK: Public Methods
-    public func show(inController topViewController: UIViewController? = UIApplication.topViewController()) -> Self {
+    public func show(inController topViewController: UIViewController? = nil) -> Self {
         // get top view controller
-        guard let topViewController = topViewController else {
-            fatalError("no top view controller detected")
+        if let topViewController = topViewController {
+            self.topViewController = topViewController
+        } else {
+            self.topViewController = UIApplication.topViewController()
         }
-        self.topViewController = topViewController
         
         // first remove all banners
-        RADInfoBannerView.hideAllInfoBannerViewInView(topViewController.view)
+        RADInfoBannerView.hideAllInfoBannerViewInView(self.topViewController!.view)
         
         // add to view
-        topViewController.view.addSubview(self)
-        topViewController.view.layoutIfNeeded()
-        topViewController.view.updateConstraintsIfNeeded()
-        // compute the correct height of the info banner view
-        self.heightConstraint.constant = self.infoBannerViewHeight()
+        self.topViewController!.view.addSubview(self)
+        self.topViewController!.view.layoutIfNeeded()
+        self.topViewController!.view.updateConstraintsIfNeeded()
+        // set height of the info banner view
+        self.heightConstraint.constant = self.textLabelHeight()
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.layoutIfNeeded()
         })
@@ -108,28 +136,29 @@ public class RADInfoBannerView: UIView {
         return self
     }
     
-    public func hide(afterDelay delay: Double? = 0.0) {
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay ?? 0.0 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            // set height back to 0
-            self.heightConstraint.constant = 0.0
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                self.layoutIfNeeded()
-            }, completion: { (finished) -> Void in
-                self.removeFromSuperview()
-            })
+    public func hide(afterDelay delay: Double? = nil, animated: Bool = true) {
+        if let delay = delay {
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+                self.hideInfoBannerView(animated)
+            }
+        } else {
+            self.hideInfoBannerView(animated)
         }
     }
     
-    public class func showInfoBannerView(text: String, showActivityIndicatorView: Bool = false, hideAfter delay: Double? = 3.0) -> RADInfoBannerView {
+    public class func showInfoBannerView(text: String, showActivityIndicatorView: Bool = false, hideAfter delay: Double? = nil) -> RADInfoBannerView {
         let infoBannerView = RADInfoBannerView(text: text, showActivityIndicatorView: showActivityIndicatorView)
-        infoBannerView.show().hide(afterDelay: delay)
+        infoBannerView.show()
+        if let delay = delay {
+            infoBannerView.hide(afterDelay: delay)
+        }
         return infoBannerView
     }
     
     public class func hideAllInfoBannerViewInView(view: UIView) {
         for view in view.subviews where view is RADInfoBannerView {
-            (view as! RADInfoBannerView).hide()
+            (view as! RADInfoBannerView).hide(animated: false)
         }
     }
     
