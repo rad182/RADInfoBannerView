@@ -50,6 +50,16 @@ infoBannerView.textLabel.textColor = .yellowColor()
 infoBannerView.show().hide(afterDelay: 3.0)
 ```
 
+**NOTE:** If you're using **UIViewController Containment** you will need to specify which controller you want to show the info banner view
+```swift
+RADInfoBannerView.showInfoBannerView("Loading more messages", showActivityIndicatorView: true, inController: self)
+```
+
+Lastly, Hiding
+```swift
+RADInfoBannerView.hideAllInfoBannerView(inController: self, animated: true)
+```
+
 ## Communication
 
 - If you **found a bug**, open an issue.
