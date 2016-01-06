@@ -35,40 +35,43 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Hello" borderStyle="roundedRect" placeholder="Message" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgu-4F-CLn">
-                                <rect key="frame" x="35" y="300.5" width="530" height="30"/>
+                                <rect key="frame" x="35" y="270.5" width="530" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="6vm-aM-29y"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JyT-eU-9xS">
-                                <rect key="frame" x="35" y="350.5" width="530" height="30"/>
+                                <rect key="frame" x="35" y="320.5" width="530" height="30"/>
                                 <state key="normal" title="Show Info Banner View"/>
                                 <connections>
                                     <action selector="didTapShowInfoBannerViewButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Nx0-V5-gEq"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Indicator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JP-8d-y3f">
-                                <rect key="frame" x="35" y="254.5" width="128.5" height="20.5"/>
+                                <rect key="frame" x="35" y="224.5" width="128.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="laf-Z7-QVh">
-                                <rect key="frame" x="516" y="249.5" width="51" height="31"/>
+                                <rect key="frame" x="516" y="219.5" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Navigation Bar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQR-8U-PUE">
-                                <rect key="frame" x="35" y="214" width="111.5" height="20.5"/>
+                                <rect key="frame" x="35" y="184" width="111.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUI-EK-pnn">
-                                <rect key="frame" x="516" y="209" width="51" height="31"/>
+                                <rect key="frame" x="516" y="179" width="51" height="31"/>
                                 <connections>
                                     <action selector="navigationBarSwitchValueDidChange" destination="vXZ-lx-hvc" eventType="valueChanged" id="CUW-Mg-9he"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RB-aT-p78">
-                                <rect key="frame" x="35" y="400.5" width="530" height="30"/>
+                                <rect key="frame" x="35" y="370.5" width="530" height="30"/>
                                 <state key="normal" title="Show Custom Info Banner View Color"/>
                                 <connections>
                                     <action selector="didTapShowCustomInfoBannerViewColorButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="d0O-09-Va6"/>
@@ -90,7 +93,7 @@
                             <constraint firstItem="rgu-4F-CLn" firstAttribute="top" secondItem="laf-Z7-QVh" secondAttribute="bottom" constant="20" id="Tru-Si-Rjy"/>
                             <constraint firstItem="JyT-eU-9xS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="15" id="XPa-w0-1pq"/>
                             <constraint firstItem="9RB-aT-p78" firstAttribute="top" secondItem="JyT-eU-9xS" secondAttribute="bottom" constant="20" id="aph-Xv-KPT"/>
-                            <constraint firstItem="SQR-8U-PUE" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="150" id="bdB-oW-aGC"/>
+                            <constraint firstItem="SQR-8U-PUE" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="120" id="bdB-oW-aGC"/>
                             <constraint firstItem="9RB-aT-p78" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="15" id="fcO-eM-z6k"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9RB-aT-p78" secondAttribute="trailing" constant="15" id="j0W-F4-C8M"/>
                             <constraint firstItem="JyT-eU-9xS" firstAttribute="top" secondItem="rgu-4F-CLn" secondAttribute="bottom" constant="20" id="zte-So-CC8"/>
@@ -109,7 +112,6 @@
         <!--Root View Controller-->
         <scene sceneID="kkM-tJ-3Zr">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fjc-a7-t4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="DTz-bh-5t2" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Kl-mj-mux">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -132,6 +134,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="NhX-Pa-lLb"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fjc-a7-t4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
