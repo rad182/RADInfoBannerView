@@ -101,6 +101,21 @@ public class RADInfoBannerView: UIView {
         }
     }
     
+    func topViewController(base: UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(presented)
+        }
+        return base
+    }
+    
     func textLabelHeight() -> CGFloat {
         let textString = NSString(string: self.textLabel.text!)
         
@@ -117,7 +132,7 @@ public class RADInfoBannerView: UIView {
         if let topViewController = topViewController {
             self.topViewController = topViewController
         } else {
-            self.topViewController = UIApplication.topViewController()
+            self.topViewController = self.topViewController()
         }
         
         // first remove all banners
