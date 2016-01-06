@@ -4,6 +4,8 @@
 [![License](https://img.shields.io/cocoapods/l/RADInfoBannerView.svg?style=flat)](http://cocoapods.org/pods/RADInfoBannerView)
 [![Platform](https://img.shields.io/cocoapods/p/RADInfoBannerView.svg?style=flat)](http://cocoapods.org/pods/RADInfoBannerView)
 
+![demo](screenshots/demo.gif)
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
