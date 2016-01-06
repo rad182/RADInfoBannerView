@@ -81,62 +81,17 @@ public class RADInfoBannerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Private Methods
-    func hideInfoBannerView(animated: Bool = true) {
-        // if already removed then just return
-        guard let _ = self.superview else {
-            return
-        }
-        
-        if animated {
-            // set height back to 0
-            self.heightConstraint.constant = 0.0
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                self.superview!.layoutIfNeeded()
-            }, completion: { (finished) -> Void in
-                self.removeFromSuperview()
-            })
-        } else {
-            self.removeFromSuperview()
-        }
-    }
-    
-    func topViewController(base: UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController) -> UIViewController? {
-        if let nav = base as? UINavigationController {
-            return topViewController(nav.visibleViewController)
-        }
-        if let tab = base as? UITabBarController {
-            if let selected = tab.selectedViewController {
-                return topViewController(selected)
-            }
-        }
-        if let presented = base?.presentedViewController {
-            return topViewController(presented)
-        }
-        return base
-    }
-    
-    func textLabelHeight() -> CGFloat {
-        let textString = NSString(string: self.textLabel.text!)
-        
-        let screenWidth = CGRectGetWidth(UIScreen.mainScreen().bounds)
-        let constraintRect = CGSize(width: screenWidth * 0.8, height: CGFloat.max)
-        let boundingBox = textString.boundingRectWithSize(constraintRect, options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: self.textLabel.font], context: nil)
-        let calculatedHeight = boundingBox.size.height + RADInfoBannerViewHeightPadding
-        return calculatedHeight > RADInfoBannerViewHeight ? calculatedHeight : RADInfoBannerViewHeight
-    }
-    
     // MARK: Public Methods
     public func show(inController topViewController: UIViewController? = nil) -> Self {
         // get top view controller
         if let topViewController = topViewController {
             self.topViewController = topViewController
         } else {
-            self.topViewController = self.topViewController()
+            self.topViewController = RADInfoBannerView.topViewController()
         }
         
         // first remove all banners
-        RADInfoBannerView.hideAllInfoBannerViewInView(self.topViewController!.view)
+        RADInfoBannerView.hideAllInfoBannerView(inController: self.topViewController)
         
         // add to view
         self.topViewController!.view.addSubview(self)
@@ -171,10 +126,64 @@ public class RADInfoBannerView: UIView {
         return infoBannerView
     }
     
-    public class func hideAllInfoBannerViewInView(view: UIView) {
-        for view in view.subviews where view is RADInfoBannerView {
-            (view as! RADInfoBannerView).hide(animated: false)
+    public class func hideAllInfoBannerView(inController topViewController: UIViewController? = nil, animated: Bool = true) {
+        var viewController: UIViewController!
+        if let topViewController = topViewController {
+            viewController = topViewController
+        } else {
+            viewController = RADInfoBannerView.topViewController()
+        }
+        
+        for view in viewController.view.subviews where view is RADInfoBannerView {
+            (view as! RADInfoBannerView).hide(animated: animated)
         }
     }
     
+}
+
+extension RADInfoBannerView {
+    // MARK: Private Methods
+    func textLabelHeight() -> CGFloat {
+        let textString = NSString(string: self.textLabel.text!)
+        
+        let screenWidth = CGRectGetWidth(UIScreen.mainScreen().bounds)
+        let constraintRect = CGSize(width: screenWidth * 0.8, height: CGFloat.max)
+        let boundingBox = textString.boundingRectWithSize(constraintRect, options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: self.textLabel.font], context: nil)
+        let calculatedHeight = boundingBox.size.height + RADInfoBannerViewHeightPadding
+        return calculatedHeight > RADInfoBannerViewHeight ? calculatedHeight : RADInfoBannerViewHeight
+    }
+    
+    func hideInfoBannerView(animated: Bool = true) {
+        // if already removed then just return
+        guard let _ = self.superview else {
+            return
+        }
+        
+        if animated {
+            // set height back to 0
+            self.heightConstraint.constant = 0.0
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.superview!.layoutIfNeeded()
+                }, completion: { (finished) -> Void in
+                    self.removeFromSuperview()
+            })
+        } else {
+            self.removeFromSuperview()
+        }
+    }
+    
+    class func topViewController(base: UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(presented)
+        }
+        return base
+    }
 }
