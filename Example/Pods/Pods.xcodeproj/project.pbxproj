@@ -12,7 +12,6 @@
 		508B774635D64991D77335C4FC947240 /* Pods-RADInfoBannerView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 170A8F90B8F524223D80F71223B2CECF /* Pods-RADInfoBannerView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58DE6F0C1161FD63EB8FEA1A3945873E /* Pods-RADInfoBannerView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECC4A1F925773BEBE5D1036599B6F1E /* Pods-RADInfoBannerView_Example-dummy.m */; };
 		6A14BBA67C93AE5F58F7FEC5B813F57C /* Pods-RADInfoBannerView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F3BE39EA7FB3D39539FA6E7ED78B3 /* Pods-RADInfoBannerView_Tests-dummy.m */; };
-		795102491C29B7F20035123B /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795102481C29B7F20035123B /* UIApplication.swift */; };
 		7DEA051DC3F653220C585E589A314338 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
 		88D5F3B3A9C4172420F08741EB72B8DF /* RADInfoBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FD085AB0D8D1F6B84EDDD84C2F053B /* RADInfoBannerView.swift */; };
 		BC2F3DDAB6469AD1EFA32E9352971489 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */; };
@@ -63,7 +62,6 @@
 		60FD085AB0D8D1F6B84EDDD84C2F053B /* RADInfoBannerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RADInfoBannerView.swift; sourceTree = "<group>"; };
 		68B577640B83B9211917A06146327FFC /* Pods-RADInfoBannerView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RADInfoBannerView_Tests-resources.sh"; sourceTree = "<group>"; };
 		6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		795102481C29B7F20035123B /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		8B40F54EE9340F2965021C27CC5C9829 /* RADInfoBannerView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RADInfoBannerView.modulemap; sourceTree = "<group>"; };
 		8C6EBBDF5EAC023736104341383175CE /* Pods-RADInfoBannerView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RADInfoBannerView_Example.modulemap"; sourceTree = "<group>"; };
 		8F0BC8F7C44553AE6E6C0A47943397C7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				60FD085AB0D8D1F6B84EDDD84C2F053B /* RADInfoBannerView.swift */,
-				795102481C29B7F20035123B /* UIApplication.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -415,7 +412,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				795102491C29B7F20035123B /* UIApplication.swift in Sources */,
 				F1D4D73706EA92574E656C9D43BF0905 /* RADInfoBannerView-dummy.m in Sources */,
 				88D5F3B3A9C4172420F08741EB72B8DF /* RADInfoBannerView.swift in Sources */,
 			);
