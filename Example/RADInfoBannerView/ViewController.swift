@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     
     @IBAction func didTapShowInfoBannerViewButton() {
         if let text = self.messageText.text where text.isEmpty == false {
-            RADInfoBannerView.showInfoBannerView(text, showActivityIndicatorView: self.activityIndicatorSwitch.on)
+            RADInfoBannerView.showInfoBannerView(text, showActivityIndicatorView: self.activityIndicatorSwitch.on, hideAfter: 3.0)
         }
     }
     
