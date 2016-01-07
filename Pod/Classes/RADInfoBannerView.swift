@@ -11,6 +11,7 @@ import UIKit
 private let RADInfoBannerViewHeight: CGFloat = 30.0
 private let RADInfoBannerViewHeightPadding: CGFloat = 10.0
 
+/// Simple and Customizable Dropdown banner below Navigation Bar
 public class RADInfoBannerView: UIView {
     
     public let textLabel = UILabel()
@@ -82,6 +83,13 @@ public class RADInfoBannerView: UIView {
     }
     
     // MARK: Public Methods
+    /**
+    Shows the Info Banner View
+    
+    - parameter topViewController: the view controller you want to specifically show
+    
+    - returns: The current Info Banner View
+    */
     public func show(inController topViewController: UIViewController? = nil) -> Self {
         // get top view controller
         if let topViewController = topViewController {
@@ -106,6 +114,12 @@ public class RADInfoBannerView: UIView {
         return self
     }
     
+    /**
+     Hide the Info Banner View
+     
+     - parameter delay:    the delay before it will dismissed
+     - parameter animated: boolean if you want to hide if animated or not
+     */
     public func hide(afterDelay delay: Double? = nil, animated: Bool = true) {
         if let delay = delay {
             let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
@@ -117,6 +131,16 @@ public class RADInfoBannerView: UIView {
         }
     }
     
+    /**
+     Creates an Info Banner View and Displays the Info Banner
+     
+     - parameter text:                      the message you want to show
+     - parameter showActivityIndicatorView: boolean if you want to show activity indicator
+     - parameter delay:                     the delay before it will dismissed
+     - parameter topViewController:         the view controller you want to specifically show
+     
+     - returns: The created info banner view
+     */
     public class func showInfoBannerView(text: String, showActivityIndicatorView: Bool = false, hideAfter delay: Double? = nil, inController topViewController: UIViewController? = nil) -> RADInfoBannerView {
         let infoBannerView = RADInfoBannerView(text: text, showActivityIndicatorView: showActivityIndicatorView)
         infoBannerView.show(inController: topViewController)
@@ -126,6 +150,12 @@ public class RADInfoBannerView: UIView {
         return infoBannerView
     }
     
+    /**
+     Hides all the Info Banner View
+     
+     - parameter topViewController: the view controller you want to specifcally hide all the info banner view
+     - parameter animated:          boolean if you want to hide if animated or not
+     */
     public class func hideAllInfoBannerView(inController topViewController: UIViewController? = nil, animated: Bool = true) {
         var viewController: UIViewController!
         if let topViewController = topViewController {
