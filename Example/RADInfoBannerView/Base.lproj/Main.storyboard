@@ -71,7 +71,7 @@
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RB-aT-p78">
-                                <rect key="frame" x="35" y="370.5" width="530" height="30"/>
+                                <rect key="frame" x="20" y="370.5" width="560" height="30"/>
                                 <state key="normal" title="Show Custom Info Banner View Color"/>
                                 <connections>
                                     <action selector="didTapShowCustomInfoBannerViewColorButton" destination="vXZ-lx-hvc" eventType="touchUpInside" id="d0O-09-Va6"/>
@@ -94,8 +94,8 @@
                             <constraint firstItem="JyT-eU-9xS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="15" id="XPa-w0-1pq"/>
                             <constraint firstItem="9RB-aT-p78" firstAttribute="top" secondItem="JyT-eU-9xS" secondAttribute="bottom" constant="20" id="aph-Xv-KPT"/>
                             <constraint firstItem="SQR-8U-PUE" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="120" id="bdB-oW-aGC"/>
-                            <constraint firstItem="9RB-aT-p78" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="15" id="fcO-eM-z6k"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9RB-aT-p78" secondAttribute="trailing" constant="15" id="j0W-F4-C8M"/>
+                            <constraint firstItem="9RB-aT-p78" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="fcO-eM-z6k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9RB-aT-p78" secondAttribute="trailing" id="j0W-F4-C8M"/>
                             <constraint firstItem="JyT-eU-9xS" firstAttribute="top" secondItem="rgu-4F-CLn" secondAttribute="bottom" constant="20" id="zte-So-CC8"/>
                         </constraints>
                     </view>
