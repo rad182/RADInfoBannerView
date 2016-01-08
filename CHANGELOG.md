@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/rad182/RADInfoBannerView/releases/tag/1.0.1)
+Released on 2016-01-08.
+
+#### Updated
+- Corrected the activity indicator position before the text
+
+---
+
 ## [1.0.0](https://github.com/rad182/RADInfoBannerView/releases/tag/1.0.0)
 Released on 2016-01-06.
 
