@@ -59,6 +59,7 @@ public class RADInfoBannerView: UIView {
         }
         
         self.heightConstraint = NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0.0)
+
         NSLayoutConstraint.activateConstraints([
             NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: self.superview, attribute: .Top, multiplier: 1.0, constant: topOffset),
             NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: self.superview, attribute: .Leading, multiplier: 1.0, constant: 0.0),
@@ -67,12 +68,12 @@ public class RADInfoBannerView: UIView {
             
             // activityIndicator
             NSLayoutConstraint(item: self.activityIndicatorView, attribute: .CenterY, relatedBy: .Equal, toItem: self.textLabel, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: self.activityIndicatorView, attribute: .Right, relatedBy: .Equal, toItem: self.textLabel, attribute: .Left, multiplier: 1.0, constant: 5.0),
+            NSLayoutConstraint(item: self.activityIndicatorView, attribute: .Right, relatedBy: .Equal, toItem: self.textLabel, attribute: .Left, multiplier: 1.0, constant: -5.0),
             
             // textLabel
             NSLayoutConstraint(item: self.textLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
             NSLayoutConstraint(item: self.textLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: self.textLabel, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 0.88, constant: 0.0)
+            NSLayoutConstraint(item: self.textLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 0.0, constant: self.textLabelSize().width)
         ])
         
         super.updateConstraints()
@@ -106,7 +107,7 @@ public class RADInfoBannerView: UIView {
         self.topViewController!.view.layoutIfNeeded()
         self.topViewController!.view.updateConstraintsIfNeeded()
         // set height of the info banner view
-        self.heightConstraint.constant = self.textLabelHeight()
+        self.heightConstraint.constant = self.infoBannerViewHeight()
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             self.layoutIfNeeded()
         })
@@ -173,14 +174,18 @@ public class RADInfoBannerView: UIView {
 
 extension RADInfoBannerView {
     // MARK: Private Methods
-    func textLabelHeight() -> CGFloat {
+    func infoBannerViewHeight() -> CGFloat {
+        let calculatedHeight = self.textLabelSize().height + RADInfoBannerViewHeightPadding
+        return calculatedHeight > RADInfoBannerViewHeight ? calculatedHeight : RADInfoBannerViewHeight
+    }
+    
+    func textLabelSize() -> CGSize {
         let textString = NSString(string: self.textLabel.text!)
         
         let screenWidth = CGRectGetWidth(UIScreen.mainScreen().bounds)
-        let constraintRect = CGSize(width: screenWidth * 0.8, height: CGFloat.max)
+        let constraintRect = CGSize(width: screenWidth * 0.82, height: CGFloat.max)
         let boundingBox = textString.boundingRectWithSize(constraintRect, options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: self.textLabel.font], context: nil)
-        let calculatedHeight = boundingBox.size.height + RADInfoBannerViewHeightPadding
-        return calculatedHeight > RADInfoBannerViewHeight ? calculatedHeight : RADInfoBannerViewHeight
+        return boundingBox.size
     }
     
     func hideInfoBannerView(animated: Bool = true) {
