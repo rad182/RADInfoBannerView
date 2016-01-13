@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/rad182/RADInfoBannerView/releases/tag/1.0.2)
+Released on 2016-01-13.
+
+#### Fixed
+- Fixed wrong text label width computation for iOS 9.x
+
+---
+
 ## [1.0.1](https://github.com/rad182/RADInfoBannerView/releases/tag/1.0.1)
 Released on 2016-01-08.
 
