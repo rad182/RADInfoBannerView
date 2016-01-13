@@ -48,9 +48,10 @@ public class RADInfoBannerView: UIView {
     }
     
     override public func updateConstraints() {
-        var topOffset: CGFloat = 20.0
+        var topOffset: CGFloat = 0.0
         
         if self.topViewController?.edgesForExtendedLayout == .All || self.topViewController?.edgesForExtendedLayout == .Top {
+            topOffset += 20.0 // add status bar height
             if let navigationController = self.topViewController?.parentViewController as? UINavigationController {
                 if navigationController.navigationBarHidden == false {
                     topOffset += CGRectGetHeight(navigationController.navigationBar.frame)
@@ -180,12 +181,10 @@ extension RADInfoBannerView {
     }
     
     func textLabelSize() -> CGSize {
-        let textString = NSString(string: self.textLabel.text!)
-        
         let screenWidth = CGRectGetWidth(UIScreen.mainScreen().bounds)
-        let constraintRect = CGSize(width: screenWidth * 0.82, height: CGFloat.max)
-        let boundingBox = textString.boundingRectWithSize(constraintRect, options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: self.textLabel.font], context: nil)
-        return boundingBox.size
+        let constraintWidth = self.activityIndicatorView.isAnimating() ? screenWidth * 0.82 : screenWidth * 0.9
+        let constraintSize = CGSize(width: constraintWidth, height: CGFloat.max)
+        return self.textLabel.sizeThatFits(constraintSize)
     }
     
     func hideInfoBannerView(animated: Bool = true) {
