@@ -62,6 +62,7 @@
 		60FD085AB0D8D1F6B84EDDD84C2F053B /* RADInfoBannerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RADInfoBannerView.swift; sourceTree = "<group>"; };
 		68B577640B83B9211917A06146327FFC /* Pods-RADInfoBannerView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RADInfoBannerView_Tests-resources.sh"; sourceTree = "<group>"; };
 		6E7E5AF37923BFA48D6994B9BFC6535F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		795102781C2BA0EA0035123B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		8B40F54EE9340F2965021C27CC5C9829 /* RADInfoBannerView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RADInfoBannerView.modulemap; sourceTree = "<group>"; };
 		8C6EBBDF5EAC023736104341383175CE /* Pods-RADInfoBannerView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RADInfoBannerView_Example.modulemap"; sourceTree = "<group>"; };
 		8F0BC8F7C44553AE6E6C0A47943397C7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,6 +131,7 @@
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				795102781C2BA0EA0035123B /* UIKit.framework */,
 				18340F12838DEE43507667CC74401EB1 /* iOS */,
 			);
 			name = Frameworks;

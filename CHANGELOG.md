@@ -51,4 +51,4 @@ Released on 2015-12-23.
 
 #### Added
 - Initial release of RADInfoBannerView.
-  - Added by [Royce Albert Dy](https://github.com/rad182).
+  - Added by [Royce Dy](https://github.com/rad182).

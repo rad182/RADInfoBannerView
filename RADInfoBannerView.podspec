@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.summary          = "Simple and Customizable Dropdown banner below Navigation Bar"
   s.homepage         = "https://github.com/rad182/RADInfoBannerView"
   s.license          = 'MIT'
-  s.author           = { "Royce Albert Dy" => "rady182@me.com" }
+  s.author           = { "Royce Dy" => "rady182@me.com" }
   s.source           = { :git => "https://github.com/rad182/RADInfoBannerView.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/rad182'
 

@@ -2,8 +2,8 @@
 //  RADInfoBannerView.swift
 //  RADInfoBannerView
 //
-//  Created by Royce Albert Dy on 23/12/2015.
-//  Copyright © 2015 Royce Albert Dy. All rights reserved.
+//  Created by Royce Dy on 23/12/2015.
+//  Copyright © 2015 Royce Dy. All rights reserved.
 //
 
 import UIKit
